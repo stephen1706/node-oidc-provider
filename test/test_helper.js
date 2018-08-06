@@ -56,7 +56,7 @@ module.exports = function testHelper(dir, { config: base = path.basename(dir), m
     return agent._saveCookies.bind(agent)({ headers: { 'set-cookie': cookies } });
   }
 
-  function login() {
+  function login(scope = 'openid') {
     const sessionId = uuid();
     const loginTs = epochTime();
     const expire = new Date();
@@ -76,7 +76,7 @@ module.exports = function testHelper(dir, { config: base = path.basename(dir), m
 
     session.authorizations = {};
     clients.forEach((cl) => {
-      session.authorizations[cl.client_id] = { sid: uuid() };
+      session.authorizations[cl.client_id] = { sid: uuid(), acceptedScopes: scope.split(' ') };
       if (i(provider).configuration('features.sessionManagement')) {
         const cookie = `_state.${cl.client_id}=${loginTs}; path=/; expires=${expire.toGMTString()}`;
         cookies.push(cookie);

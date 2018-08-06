@@ -37,6 +37,9 @@ class MyAdapter {
      * InitialAccessToken or RegistrationAccessToken the payload will contain the following
      * properties depending on the used `formats` value for the given token (or default).
      *
+     * Note: This is list is not exhaustive and properties may be added in the future, it is highly
+     * recommended to use a schema that allows for this.
+     *
      * when `legacy`
      * - grantId {string} grant identifier, tokens with the same value belong together
      * - header {string} oidc-provider tokens are themselves JWTs, this is the header part of the token
@@ -59,7 +62,8 @@ class MyAdapter {
      * - clientId {string} client identifier the token belongs to
      * - aud {array of strings} array of audiences the token is intended for
      * - authTime {number} timestamp of the end-user's authentication
-     * - claims {object} requested claims (see claims parameter in OIDC Core 1.0)
+     * - claims {object} requested claims (see claims parameter in OIDC Core 1.0), also includes
+     *     rejected ones under the `rejected` property `Array[String]`
      * - codeChallenge {string} - client provided PKCE code_challenge value
      * - codeChallengeMethod {string} - client provided PKCE code_challenge_method value
      * - grantId {string} - grant identifier, tokens with the same value belong together

@@ -8,7 +8,7 @@ const bootstrap = require('../test_helper');
 describe('userinfo /me', () => {
   before(bootstrap(__dirname));
 
-  before(function () { return this.login(); });
+  before(function () { return this.login('openid email'); });
 
   before(function () {
     const auth = new this.AuthorizationRequest({

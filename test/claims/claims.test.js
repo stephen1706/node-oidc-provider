@@ -74,7 +74,7 @@ expire.setDate(expire.getDate() + 1);
 
         Object.defineProperty(this.provider.OIDCContext.prototype, 'acr', {
           get() {
-            return get(this, 'result.login.acr', 'session');
+            return get(this, 'result.login.acr', '0');
           },
         });
 

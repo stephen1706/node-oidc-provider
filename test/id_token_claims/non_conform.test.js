@@ -13,7 +13,7 @@ const client_id = 'client';
 
 describe('features.conformIdTokenClaims=false', () => {
   before(bootstrap(__dirname, { config: 'non_conform' }));
-  before(function () { return this.login(); });
+  before(function () { return this.login(scope); });
 
   [
     'code id_token token', 'code id_token', 'code token', 'code', 'id_token token', 'id_token',
